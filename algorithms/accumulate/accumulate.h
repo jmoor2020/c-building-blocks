@@ -18,7 +18,7 @@
 //
 // Further, suppose that the binary operation supplied to the algorithm
 // is binary addition and that the initial value supplied to the algorithm
-// is 1. If we wanted to accumulate over the entire array, the algorithm 
+// is 1. If we wanted to accumulate over the entire array, the algorithm
 // would proceed as follows:
 //
 // 0. Accumulator = 1 (starting value)
@@ -34,23 +34,23 @@
 // is that their behavior may be altered significantly based on the
 // parameters they are provided. For instance, in the example above,
 // selecting add(x, y) as the binary operation produced an algorithm that
-// computed the sum of the elements in the array. However, one might imagine 
-// providing mul(x, y) as the binary operation to accumulate 
+// computed the sum of the elements in the array. However, one might imagine
+// providing mul(x, y) as the binary operation to accumulate
 // (instead of add(x, y)) in order to compute the product of the elements in an array.
 
 // The signature of the binary operation
-// provided to the accumulation algorithm. 
+// provided to the accumulation algorithm.
 typedef int (*binary_op_f)(int a, int b);
 
 // accumulate()
 //
-// Accumulates the values provided in `array` 
-// with the starting value `start`, beginning 
+// Accumulates the values provided in `array`
+// with the starting value `start`, beginning
 // at index `first` and continuing through the
-// index preceding `last`, via the binary 
+// index preceding `last`, via the binary
 // operator `op`.
 //
-// If invalid indices are provided 
+// If invalid indices are provided
 // (e.g. first is greater than or equal to last)
 // the function return 0.
 //
@@ -62,12 +62,12 @@ typedef int (*binary_op_f)(int a, int b);
 //  op    - the binary operation to apply during accumulation
 //
 // Returns:
-//  The accumulation produced according the algorithm described above 
+//  The accumulation produced according the algorithm described above
 int accumulate(
-    int array[], 
-    size_t first, 
-    size_t last, 
-    int start, 
+    int array[],
+    size_t first,
+    size_t last,
+    int start,
     binary_op_f op);
 
 #endif // ACCUMULATE_H

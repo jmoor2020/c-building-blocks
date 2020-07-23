@@ -4,10 +4,23 @@
 #include "binary_tree.h"
 
 binary_tree_t* tree_new(
-	comparator_f comparator, 
+	comparator_f comparator,
 	deleter_f deleter)
 {
-	return NULL;
+	if (comparator == NULL || deleter == NULL){
+		return NULL;
+	}
+	binary_tree_t* tree = malloc(sizeof(binary_tree_t));
+	if (tree == NULL){
+		return NULL;
+	}
+
+	tree->comparator = comparator;
+	tree->deleter = deleter;
+	tree->root = NULL;
+	tree->count = 0;
+
+	return tree;
 }
 
 void tree_delete(binary_tree_t *tree)
@@ -16,9 +29,9 @@ void tree_delete(binary_tree_t *tree)
 }
 
 bool tree_insert(
-	binary_tree_t* tree, 
-	void* key, 
-	void* value, 
+	binary_tree_t* tree,
+	void* key,
+	void* value,
 	void** out)
 {
 	return false;

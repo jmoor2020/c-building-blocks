@@ -12,7 +12,7 @@ struct stack_item;
 // The stack data structure.
 typedef struct stack
 {
-    // The number of elements in the stack. 
+    // The number of elements in the stack.
     size_t count;
 
     // Pointer to the current top of the stack.
@@ -41,10 +41,10 @@ stack_t* stack_new(void);
 // the stack_delete() method returns a boolean denoting whether
 // the destruction operation succeeded or failed. In the event
 // that the stack is not empty (count > 0), desutruction of
-// the stack fails, and the function returns `false`. Thus, 
+// the stack fails, and the function returns `false`. Thus,
 // it is up to users of the stack to check the return value
 // of stack_delete() and if it returns `false`, call stack_pop()
-// in a loop and manually destroy all of the stack's items prior 
+// in a loop and manually destroy all of the stack's items prior
 // to calling stack_delete() again to complete the operation.
 //
 // Returns:
@@ -53,7 +53,7 @@ stack_t* stack_new(void);
 bool stack_delete(stack_t* stack);
 
 // stack_push()
-// 
+//
 // Push a new item onto the top of the stack.
 //
 // This function returns `false` in the event
