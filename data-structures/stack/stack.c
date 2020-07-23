@@ -17,8 +17,8 @@ typedef struct stack_item
 
 lstack_t* stack_new(void)
 {
-    stack_t *stack;
-    stack = malloc(sizeof(stack_t));
+    lstack_t *stack;
+    stack = malloc(sizeof(lstack_t));
     if (stack == NULL){
       return NULL;
     }
@@ -114,12 +114,11 @@ void* stack_peek(lstack_t* stack)
 
 size_t stack_count(lstack_t* stack)
 {
-<<<<<<< HEAD
+
     if (stack == NULL){
       return 0;
     }
     return stack->count;
-=======
     return 0;
->>>>>>> upstream/master
+
 }
