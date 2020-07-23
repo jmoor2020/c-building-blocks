@@ -112,7 +112,6 @@ void* stack_peek(lstack_t* stack)
     return item;
 }
 
-//test chaBGE
 
 size_t stack_count(lstack_t* stack)
 {
