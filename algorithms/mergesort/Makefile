@@ -1,13 +1,13 @@
-# algorithms/accumulate/Makefile
+# algorithms/mergesort/Makefile
 #
-# Makefile for accumulate algorithm.
+# Makefile for mergesort algorithm.
 
 CC = gcc
 CFLAGS = -Wall -Werror -std=c11 -ggdb
 
 CHECK_FLAGS = $(shell pkg-config --cflags --libs check)
 
-LIB = accumulate
+LIB = mergesort
 
 lib: $(LIB).o
 

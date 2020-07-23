@@ -15,7 +15,7 @@ typedef struct stack_item
     void* data;
 } stack_item_t;
 
-stack_t* stack_new(void)
+lstack_t* stack_new(void)
 {
     stack_t *stack;
     stack = malloc(sizeof(stack_t));
@@ -27,7 +27,7 @@ stack_t* stack_new(void)
     return stack;
 }
 
-bool stack_delete(stack_t* stack)
+bool stack_delete(lstack_t* stack)
 {
     if (stack == NULL || stack->count > 0){
       return false;
@@ -39,7 +39,7 @@ bool stack_delete(stack_t* stack)
     return true;
 }
 
-bool stack_push(stack_t* stack, void* data)
+bool stack_push(lstack_t* stack, void* data)
 {
     if (stack == NULL){
       return false;
@@ -72,7 +72,7 @@ bool stack_push(stack_t* stack, void* data)
     return true;
 }
 
-void* stack_pop(stack_t* stack)
+void* stack_pop(lstack_t* stack)
 {
     if (stack == NULL){
       return NULL;
@@ -95,7 +95,7 @@ void* stack_pop(stack_t* stack)
     return item;
 }
 
-void* stack_peek(stack_t* stack)
+void* stack_peek(lstack_t* stack)
 {
     if (stack == NULL){
       return NULL;
@@ -112,10 +112,14 @@ void* stack_peek(stack_t* stack)
     return item;
 }
 
-size_t stack_count(stack_t* stack)
+size_t stack_count(lstack_t* stack)
 {
+<<<<<<< HEAD
     if (stack == NULL){
       return 0;
     }
     return stack->count;
+=======
+    return 0;
+>>>>>>> upstream/master
 }

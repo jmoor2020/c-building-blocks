@@ -1,13 +1,13 @@
-# algorithms/accumulate/Makefile
+# algorithms/quicksort/Makefile
 #
-# Makefile for accumulate algorithm.
+# Makefile for quicksort algorithm.
 
 CC = gcc
 CFLAGS = -Wall -Werror -std=c11 -ggdb
 
 CHECK_FLAGS = $(shell pkg-config --cflags --libs check)
 
-LIB = accumulate
+LIB = quicksort
 
 lib: $(LIB).o
 

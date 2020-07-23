@@ -1,5 +1,5 @@
 // check.c
-// Driver program for bubble sort algorithm tests.
+// Driver program for quicksort algorithm tests.
 
 // attribute gnu_printf
 #pragma GCC diagnostic ignored "-Wignored-attributes"
@@ -8,21 +8,16 @@
 #include <check.h>
 #include <stdlib.h>
 
-#include "bubble_sort.h"
+#include "quicksort.h"
 
-#define N_ITEMS 100
+#define N_ITEMS 500
 
 // ----------------------------------------------------------------------------
 // Definitions for Testing
 
-static bool less(int a, int b)
+static bool less_equal(int a, int b)
 {
-    return a < b;
-}
-
-static bool greater(int a, int b)
-{
-    return a > b;
+    return a <= b;
 }
 
 static void random_array(
@@ -42,11 +37,11 @@ static bool is_sorted(
     int array[], 
     size_t begin, 
     size_t end, 
-    policy_f policy)
+    comparator_f cmp)
 {
     for (size_t i = begin; i < end; ++i)
     {
-        if (policy(array[i], array[i+1]))
+        if (!cmp(array[i], array[i+1]))
         {
             return false;
         }
@@ -58,31 +53,26 @@ static bool is_sorted(
 // ----------------------------------------------------------------------------
 // Test Cases
 
-START_TEST(test_bubble_sort)
+START_TEST(test_quicksort)
 {
-    int arr1[N_ITEMS];
-    int arr2[N_ITEMS];
+    int array[N_ITEMS];
 
-    random_array(arr1, N_ITEMS, 0, 1000);
-    random_array(arr2, N_ITEMS, 0, 1000);
-
-    bubble_sort(arr1, 0, N_ITEMS, less);     // descending sort
-    ck_assert_msg(is_sorted(arr1, 0, N_ITEMS, less), "bubble_sort() failed to produce sorted array");
-
-    bubble_sort(arr2, 0, N_ITEMS, greater);  // ascending sort
-    ck_assert_msg(is_sorted(arr2, 0, N_ITEMS, greater), "bubble_sort() failed to produce sorted array");
+    // test ascending sorts
+    random_array(array, N_ITEMS, 0, 1000);
+    quicksort(array, 0, N_ITEMS - 1, less_equal);
+    ck_assert_msg(is_sorted(array, 0, N_ITEMS - 1, less_equal));
 }
 END_TEST
 
 // ----------------------------------------------------------------------------
 // Infrastructure
  
-Suite* bubble_sort_suite(void)
+Suite* quicksort_suite(void)
 {
-    Suite* s = suite_create("bubble-sort");
-    TCase* tc_core = tcase_create("bubble-sort-core");
+    Suite* s = suite_create("quicksort");
+    TCase* tc_core = tcase_create("quicksort-core");
     
-    tcase_add_test(tc_core, test_bubble_sort);
+    tcase_add_test(tc_core, test_quicksort);
     
     suite_add_tcase(s, tc_core);
     
@@ -93,7 +83,7 @@ int main(void)
 {
     srand(1);
 
-    Suite* suite = bubble_sort_suite();
+    Suite* suite = quicksort_suite();
     SRunner* runner = srunner_create(suite);
 
     srunner_run_all(runner, CK_NORMAL);    
